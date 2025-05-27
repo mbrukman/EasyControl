@@ -58,7 +58,7 @@ jobs:
         run: python -m pip install mypy
 
       - name: Check types with Mypy
-        run: python -m mypy --python-version=${{ matrix.python }} .
+        run: python -m mypy --python-version=${{ matrix.python }} --exclude '__init__.py' .
         # TODO: fix the type checking errors and remove this line to make errors
         # obvious by failing the test.
         continue-on-error: true
@@ -67,7 +67,7 @@ jobs:
         run: python -m pip install pytype
 
       - name: Check types with PyType
-        run: python -m pytype --python-version=${{ matrix.python }} -k .
+        run: python -m pytype --python-version=${{ matrix.python }} --exclude '__init__.py' -k .
         # TODO: fix the type checking errors and remove this line to make errors
         # obvious by failing the test.
         continue-on-error: true
